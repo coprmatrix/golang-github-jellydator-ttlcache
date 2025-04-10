@@ -9,10 +9,10 @@
 
 # https://github.com/jellydator/ttlcache
 %global goihead ttlcache
-%global goipath github.com/jellydator/%{goihead}/v3
+%global goipath2 github.com/jellydator/%{goihead}
 Version:  3.3.0
 %define oldver 3.3.0
-
+%define goipath %{goipath2}/v%{lua: local i =rpm.expand('%version'):gsub('%..*', ''); print(i)}
 # REMOVE BEFORE SUBMITTING THIS FOR REVIEW
 # ---
 # New Fedora packages should use %%gometa -f, which makes the package
@@ -41,7 +41,7 @@ License:        MIT
 URL:            %{gourl}
 %define scommit %{?commit}%{?!commit:v%{version}}
 %define stag %{?tag}%{?!tag:%scommit}
-Source: https://%{goipath}/archive/%{stag}/%{goihead}-%{stag}.tar.gz
+Source: https://%{goipath2}/archive/%{stag}/%{goihead}-%{stag}.tar.gz
 
 %description %{common_description}
 
